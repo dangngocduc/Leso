@@ -1,8 +1,46 @@
 apply plugin: 'java'
 
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+
+    }
+}
+
+ext {
+    // Where you will see your artifact in Bintray's web interface
+    // The "bintrayName" should match the name of the Bintray repro.
+    bintrayRepo = 'AndroidLibrary'
+    bintrayName = 'leso-annotation'
+
+    // Maven metadata
+    publishedGroupId = 'com.android.leso'
+    libraryName = 'Leso annotation'
+    // Save yourself a head ache, and set this equal to the name of the Android Studio library
+    // module. The artifact name needs to match the name of the library.
+    artifact = 'annotation'
+
+    libraryDescription = 'Adapter Recycleview with annotation'
+    libraryVersion = '1.0.1'
+
+    developerId = 'dangngocduc'
+    developerName = 'Dang Ngoc Duc'
+    developerEmail = 'dangngocduc.bk@gmail.com'
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
+//apply from:"$rootProject.projectDir/annotation/gradle-mvn-push.gradle"
+
+
+
