@@ -16,7 +16,7 @@ android {
 
 Trong  _dependencies_ của module thêm 2 dòng sau :
 ```groovy
-annotationProcessor 'com.android.leso:processor:1.0.4'
+annotationProcessor 'com.android.leso:processor:1.0.8'
 compile 'com.android.leso:annotation:1.0.2'
 ```
 ### Cách dùng
@@ -26,10 +26,13 @@ compile 'com.android.leso:annotation:1.0.2'
 ```java
 import com.annotation.AdapterRecycleview;
 	...
-@AdapterRecycleview(viewholder = {ViewHolderTextView.class})
-public class Home {}
+@AdapterRecycleview(viewholder = {AddressBookItemViewHolder.class})
+public class AddressBookAdapter extends AddressBookAdapter_Builder<AddressData> {
+...
+}
 ```
-Như ví dụ trên Adapter chỉ có 1 loại row là __ViewHolderTextView__ --> nên chỉ cần khai báo 1 ViewHolder trong annotation .
+Như ví dụ trên Adapter chỉ có 1 loại row là _AddressBookItemViewHolder_ --> nên chỉ cần khai báo 1 ViewHolder trong annotation .
+__AddressBookAdapter_Builder__ là Adapter thư viện gen ra, nó sẽ có dạng : <Ten class của ban >_Builder 
 
 #### ViewHolder Info
 1 ViewHolder sẽ cần phải có 2 thông tin cơ bản :
@@ -44,23 +47,25 @@ public void bind(Context context, String content)
 ```java
 import com.annotation.Viewholder;
 		...
-@Viewholder(layout = R.layout.row_text , data = String.class)
-public class ViewHolderTextView extends RecyclerView.ViewHolder {
-	public TextView mText;
+@Viewholder(layout = R.layout.row_hybris_address_book , data = AddressData.class)
+public class AddressBookItemViewHolder extends RecyclerView.ViewHolder {
+	@Bind(R.id.text_info)
+    TextView mTextInfo;
+    .....
 	public ViewHolderTextView(View itemView) {
 		super(itemView);
-		mText = (TextView) itemView.findViewById(R.id.text_view);
+		ButterKnife.bind(this, view);
 	}
 
-	public void bind(Context context, String content) {
-		mText.setText(content);
+	public void bindData(Context context, String content) {
+		        mTextInfo.setText(String.format("%s - %s", data.fullName, data.phone));
 		}
 }
 ```
 ### Sử dụng 
-Với 1 AdapterInfo ( như trên là Home.class) thư viện sẽ tự gen ra 1 Adapter có dạng : Home_Builder với 1 số method cơ bản mà bạn hay phải code lặp lại như __getItemViewType__ , __onCreateViewHolder__, __onBindViewHolder__, __getItemCount__ , bạn có thể dùng luôn hoặc kế thừa class này để sử dụng các chức năng nâng cao mà bạn muốn tùy biến.
+Với 1 AdapterInfo ( như trên là AddressBookAdapter.class) thư viện sẽ tự gen ra 1 Adapter có dạng : AddressBookAdapter_Builder với 1 số method cơ bản mà bạn hay phải code lặp lại như __getItemViewType__ , __onCreateViewHolder__, __onBindViewHolder__, __getItemCount__ Phần còn lại trong class AddressBookAdapter là phần code xử lý logic ...
 ```java
-        Home_Builder mAdapter;
+        AddressBookAdapter mAdapter;
         ...
         mRecyclerView.setAdapter(mAdapter);
 ```
@@ -80,28 +85,26 @@ import java.util.ArrayList;
 /**
  * Created by @leso.
  */
-public class  Home_Builder extends RecyclerView.Adapter {
-    protected ArrayList mDatas = new ArrayList();
+public class  AddressBookAdapter_Builder<E> extends RecyclerView.Adapter {
+    protected ArrayList<E> mDatas = new ArrayList<E>();
 
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     private static ArrayList<com.leso.adapter.info.IViewHolderInfo> list = new ArrayList<>();
-    private static SparseIntArray mListViewHolder;
-
     static {
-        list.add(new ViewHolderTextViewInfo());
+        list.add(new AddressBookItemViewHolderInfo());
     }
-    public void addDatas(ArrayList data) {
-     mDatas.addAll(data);
-    notifyItemRangeInserted(mDatas.size() - data.size(), data.size());
+    public void addDatas(ArrayList<E> data) {
+        mDatas.addAll(data);
+      notifyItemRangeInserted(mDatas.size() - data.size(), data.size());
      }
 
-    public void addData(Object data) {
+    public void addData(E data) {
         mDatas.add(data);
         notifyItemInserted(mDatas.size() - 1);
     }
 
-    public Home_Builder(Context context) {
+    public AddressBookAdapter_Builder(Context context) {
         mContext = context;
         mLayoutInflater = LayoutInflater.from(mContext);
     }

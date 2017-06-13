@@ -62,8 +62,8 @@ public class LesoProcessor extends AbstractProcessor {
             builder.append("import android.view.ViewGroup;\n\n");
             builder.append("import java.util.ArrayList;\n\n");
             builder.append("/**\n * Created by @leso.\n */\n");
-            builder.append("public class  " + element.getSimpleName().toString() + "_Adapter extends RecyclerView.Adapter {\n");
-            builder.append("    protected ArrayList mDatas = new ArrayList();\n\n");
+            builder.append("public class  " + element.getSimpleName().toString() + "_Builder<E> extends RecyclerView.Adapter {\n");
+            builder.append("    protected ArrayList<E> mDatas = new ArrayList<E>();\n\n");
             builder.append("    private Context mContext;\n");
             builder.append("    private LayoutInflater mLayoutInflater;\n");
             builder.append("    private static ArrayList<com.leso.adapter.info.IViewHolderInfo> list = new ArrayList<>();\n");
@@ -78,12 +78,12 @@ public class LesoProcessor extends AbstractProcessor {
             }
             builder.append("    }\n");
 
-            builder.append("    public void addDatas(ArrayList data) {\n        mDatas.addAll(data);\n      notifyItemRangeInserted(mDatas.size() - data.size(), data.size());\n     }\n\n");
-            builder.append("    public void addData(Object data) {\n");
+            builder.append("    public void addDatas(ArrayList<E> data) {\n        mDatas.addAll(data);\n      notifyItemRangeInserted(mDatas.size() - data.size(), data.size());\n     }\n\n");
+            builder.append("    public void addData(E data) {\n");
             builder.append("        mDatas.add(data);\n");
             builder.append("        notifyItemInserted(mDatas.size() - 1);\n");
             builder.append("    }\n\n");
-            builder.append("    public " + element.getSimpleName().toString() + "_Adapter(Context context) {\n");
+            builder.append("    public " + element.getSimpleName().toString() + "_Builder(Context context) {\n");
             builder.append("        mContext = context;\n");
             builder.append("        mLayoutInflater = LayoutInflater.from(mContext);\n");
             builder.append("    }\n\n");
@@ -113,7 +113,7 @@ public class LesoProcessor extends AbstractProcessor {
 
             JavaFileObject javaFileObject = null;
             try {
-                javaFileObject = processingEnv.getFiler().createSourceFile("com.leso.adapter.adapter." + element.getSimpleName().toString() + "_Adapter");
+                javaFileObject = processingEnv.getFiler().createSourceFile("com.leso.adapter.adapter." + element.getSimpleName().toString() + "_Builder");
                 Writer writer = javaFileObject.openWriter();
                 writer.write(builder.toString());
                 writer.close();
