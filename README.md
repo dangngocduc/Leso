@@ -41,7 +41,7 @@ __AddressBookAdapter_Builder__ là Adapter thư viện gen ra, nó sẽ có dạ
  
 __chú ý__ : Viewholder bắt buộc phải có 1 method dạng : 
 ```java
-public void bind(Context context, String content)
+public void bind(Context context, <Data đc define trong annotation @Viewholder> content)
 ```
 để tu viện có thể bind Data vào , nếu muốn custom bạn có thể extend lại phần bindData của Adapter do thư viện gen ra.
 ```java
