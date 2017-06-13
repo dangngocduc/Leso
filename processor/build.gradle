@@ -17,18 +17,20 @@ ext {
     artifact = 'processor'
 
     libraryDescription = 'Adapter Recycleview with annotation'
-    libraryVersion = '1.0.0'
+    libraryVersion = '1.0.2'
 
     developerId = 'dangngocduc'
     developerName = 'Dang Ngoc Duc'
     developerEmail = 'dangngocduc.bk@gmail.com'
 }
 
-
 buildscript {
     repositories {
         jcenter()
         mavenCentral()
+        maven {
+            url "https://dl.bintray.com/dangngocduc/AndroidLibrary"
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.2'
@@ -40,7 +42,7 @@ buildscript {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.google.auto.service:auto-service:1.0-rc1'
-    compile project(':annotation')
+    compile 'com.android.leso:annotation:1.0.2'
 }
 
 apply from:"$rootProject.projectDir/processor/gradle-mvn-push.gradle"

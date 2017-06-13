@@ -27,7 +27,7 @@ ext {
     artifact = 'annotation'
 
     libraryDescription = 'Adapter Recycleview with annotation'
-    libraryVersion = '1.0.1'
+    libraryVersion = '1.0.2'
 
     developerId = 'dangngocduc'
     developerName = 'Dang Ngoc Duc'
