@@ -16,7 +16,7 @@ android {
 
 Trong  _dependencies_ của module thêm 2 dòng sau :
 ```groovy
-annotationProcessor 'com.android.leso:processor:1.0.2'
+annotationProcessor 'com.android.leso:processor:1.0.4'
 compile 'com.android.leso:annotation:1.0.2'
 ```
 ### Cách dùng
