@@ -57,7 +57,7 @@ public class AddressBookItemViewHolder extends RecyclerView.ViewHolder {
 		ButterKnife.bind(this, view);
 	}
 
-	public void bindData(Context context, String content) {
+	public void bindData(Context context, AddressData data) {
 		        mTextInfo.setText(String.format("%s - %s", data.fullName, data.phone));
 		}
 }
