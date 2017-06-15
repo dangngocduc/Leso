@@ -5,4 +5,6 @@ package com.leso;
  */
 
 public class C {
+
+    public static String author = "Created by @Leso - dangngocduc.bk@gmail.com";
 }
