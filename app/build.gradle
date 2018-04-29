@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 27
@@ -25,5 +28,9 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:27.1.1'
 
     compile 'com.android.leso:annotation:1.0.3'
-    annotationProcessor 'com.android.leso:processor:1.1.2'
+    kapt 'com.android.leso:processor:1.1.2'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }

@@ -1,33 +1,21 @@
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
 
+
+group = publishedGroupId                               // Maven Group ID for the artifact
 version = libraryVersion
-
-//task sourcesJar(type: Jar) {
-//    from android.sourceSets.main.java.srcDirs
-//    classifier = 'sources'
-//}
 
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
     from sourceSets.main.allSource
 }
-//
-//task javadoc(type: Javadoc) {
-//    source = android.sourceSets.main.java.srcDirs
-//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-//}
-//
-//task javadocJar(type: Jar, dependsOn: javadoc) {
-//    classifier = 'javadoc'
-//    from javadoc.destinationDir
-//}
+
 artifacts {
-    //  archives javadocJar
     archives sourcesJar
 }
 
-// Bintray
 Properties properties = new Properties()
+
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 bintray {
@@ -43,33 +31,19 @@ bintray {
         publicDownloadNumbers = true
         version {
             desc = libraryDescription
-            // Optional. The passphrase for GPG signing'
-            // gpg {
-            //    sign = true //Determines whether to GPG sign the files. The default is false
-            //    passphrase = properties.getProperty("bintray.gpg.password")
-            //}
         }
     }
 }
 
-
-apply plugin: 'com.github.dcendents.android-maven'
-
-group = publishedGroupId                               // Maven Group ID for the artifact
-
 install {
     repositories.mavenInstaller {
-        // This generates POM.xml with proper parameters
         pom {
             project {
                 packaging 'aar'
                 groupId publishedGroupId
                 artifactId artifact
-
-                // Add your description here
                 name libraryName
                 description libraryDescription
-
                 developers {
                     developer {
                         id developerId
@@ -78,9 +52,6 @@ install {
                     }
                 }
                 scm {
-                    //connection gitUrl
-                    //developerConnection gitUrl
-                    //url siteUrl
 
                 }
             }
