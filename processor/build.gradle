@@ -1,7 +1,4 @@
 apply plugin: 'java'
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
 
 ext {
     // Where you will see your artifact in Bintray's web interface
@@ -17,7 +14,7 @@ ext {
     artifact = 'processor'
 
     libraryDescription = 'Adapter Recycleview with annotation'
-    libraryVersion = '1.1.1'
+    libraryVersion = '1.1.2'
 
     developerId = 'dangngocduc'
     developerName = 'Dang Ngoc Duc'
@@ -42,9 +39,11 @@ buildscript {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.google.auto.service:auto-service:1.0-rc1'
-    compile 'com.android.leso:annotation:1.0.2'
+    compile 'com.android.leso:annotation:1.0.3'
     compile 'com.squareup:javapoet:1.9.0'
 
 }
 
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
 apply from:"$rootProject.projectDir/processor/gradle-mvn-push.gradle"

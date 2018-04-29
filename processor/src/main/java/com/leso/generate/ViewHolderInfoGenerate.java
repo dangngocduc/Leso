@@ -1,6 +1,6 @@
-package com.leso.demo.annotation;
+package com.leso.generate;
 
-import com.annotation.Viewholder;
+import com.annotation.ViewHolder;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
@@ -20,11 +20,11 @@ import javax.lang.model.type.MirroredTypeException;
  * Created by DANGNGOCDUC on 6/15/2017.
  */
 
-public class ViewholderInfoGener {
+public class ViewHolderInfoGenerate {
 
     public static JavaFile getJavaFile(TypeElement element) {
 
-        Viewholder holder = element.getAnnotation(Viewholder.class);
+        ViewHolder holder = element.getAnnotation(ViewHolder.class);
 
         ClassName context =  ClassName.get("android.content", "Context" );
         ClassName layoutInflater =  ClassName.get("android.view", "LayoutInflater" );
@@ -91,7 +91,6 @@ public class ViewholderInfoGener {
                 .addMethod(invalidData)
                 .addMethod(getLayout)
                 .addMethod(getViewHolder)
-                .addMethod(bindData)
                 .build();
 
 
@@ -102,7 +101,7 @@ public class ViewholderInfoGener {
 
     }
 
-    private static String getData(Viewholder holder) {
+    private static String getData(ViewHolder holder) {
         try {
             return holder.data().getCanonicalName();
         } catch (MirroredTypeException e) {

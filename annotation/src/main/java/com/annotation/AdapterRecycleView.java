@@ -6,9 +6,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by DANGNGOCDUC on 6/10/2017.
+ * Created by DANGNGOCDUC on 6/9/2017.
  */
-@Target(ElementType.PARAMETER)
+
+
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.CLASS)
-public @interface Data {
+public @interface AdapterRecycleView {
+
+    Class<?>[] viewholders() default {};
+
 }

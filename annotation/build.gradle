@@ -27,7 +27,7 @@ ext {
     artifact = 'annotation'
 
     libraryDescription = 'Adapter Recycleview with annotation'
-    libraryVersion = '1.0.2'
+    libraryVersion = '1.0.3'
 
     developerId = 'dangngocduc'
     developerName = 'Dang Ngoc Duc'
@@ -41,6 +41,5 @@ dependencies {
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
 //apply from:"$rootProject.projectDir/annotation/gradle-mvn-push.gradle"
-
 
 

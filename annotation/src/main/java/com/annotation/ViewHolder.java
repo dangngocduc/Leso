@@ -8,7 +8,13 @@ import java.lang.annotation.Target;
 /**
  * Created by DANGNGOCDUC on 6/9/2017.
  */
-@Target(ElementType.FIELD)
+
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.CLASS)
-public @interface NoReuse {
+public @interface ViewHolder {
+
+    Class<?> data();
+
+    int layout();
+
 }

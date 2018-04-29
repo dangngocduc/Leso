@@ -1,11 +1,11 @@
 package com.android.leso;
 
-import com.annotation.AdapterRecycleview;
+import com.annotation.AdapterRecycleView;
 
 /**
  * Created by DANGNGOCDUC on 6/14/2017.
  */
 
-@AdapterRecycleview(viewholder = {TestViewHolder.class})
+@AdapterRecycleView(viewholders = {TestViewHolder.class})
 public class HomeAdapter {
 }

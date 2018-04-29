@@ -24,7 +24,7 @@ compile 'com.android.leso:annotation:1.0.2'
 #### Adapter info 
 Để có thể gen code thì Adapter cần biết có những loại row nào --> tương ứng với các ViewHolder bạn phải định nghĩa.
 ```java
-import com.annotation.AdapterRecycleview;
+import com.annotation.AdapterRecycleView;
 	...
 @AdapterRecycleview(viewholder = {AddressBookItemViewHolder.class})
 public class AddressBookAdapter extends AddressBookAdapter_Builder<AddressData> {
@@ -45,7 +45,7 @@ public void bindData(Context context, <Data đc define trong annotation @Viewhol
 ```
 để tu viện có thể bind Data vào , nếu muốn custom bạn có thể extend lại phần bindData của Adapter do thư viện gen ra.
 ```java
-import com.annotation.Viewholder;
+import com.annotation.ViewHolder;
 		...
 @Viewholder(layout = R.layout.row_hybris_address_book , data = AddressData.class)
 public class AddressBookItemViewHolder extends RecyclerView.ViewHolder {

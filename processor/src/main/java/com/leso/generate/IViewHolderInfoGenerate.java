@@ -1,4 +1,4 @@
-package com.leso.demo.annotation;
+package com.leso.generate;
 
 import com.leso.C;
 import com.squareup.javapoet.ClassName;
@@ -8,16 +8,13 @@ import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.TypeVariableName;
 
-import java.io.IOException;
-import java.io.Writer;
-
 import javax.lang.model.element.Modifier;
 
 /**
  * Created by DANGNGOCDUC on 6/14/2017.
  */
 
-public class IViewHolderInfoGenner {
+public class IViewHolderInfoGenerate {
 
     public static JavaFile generate() {
         MethodSpec invalidData = MethodSpec.methodBuilder("invalidData")
@@ -65,7 +62,6 @@ public class IViewHolderInfoGenner {
                 .addJavadoc(C.author)
                 .addJavadoc("\n")
                 .addMethod(getViewHolder)
-                .addMethod(bindData)
                 .build();
 
         JavaFile javaFile = JavaFile.builder("com.leso.adapter.info", IViewHolderInfo)

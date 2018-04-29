@@ -22,7 +22,7 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 //    from javadoc.destinationDir
 //}
 artifacts {
-  //  archives javadocJar
+    //  archives javadocJar
     archives sourcesJar
 }
 
