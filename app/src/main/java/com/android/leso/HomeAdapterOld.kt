@@ -35,31 +35,23 @@ class HomeAdapterOld(var mContext : Context) : RecyclerView.Adapter<RecyclerView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        when(viewType) {
-            1 -> {
-                return ViewHolderSimpleTitle(mLayoutInflater.inflate(R.layout.row_simple_title, parent, false))
-            }
+        return when(viewType) {
+            1 -> ViewHolderSimpleTitle(mLayoutInflater.inflate(R.layout.row_simple_title, parent, false))
 
-            2 -> {
-                return ViewHolderSimple2(mLayoutInflater.inflate(R.layout.row_simple_title2, parent, false))
-            }
-            else -> {
-                throw ExceptionInInitializerError("not accept this Type")
-            }
+            2 -> ViewHolderSimple2(mLayoutInflater.inflate(R.layout.row_simple_title2, parent, false))
+
+            else ->  throw ExceptionInInitializerError("not accept this Type")
+
         }
     }
 
-    override fun getItemCount(): Int {
-        return mDatas.size
-    }
+    override fun getItemCount() = mDatas.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when(holder) {
             is ViewHolderSimpleTitle -> {
-                holder.bindData(mContext, mDatas[position] as Title)
             }
             is ViewHolderSimple2 -> {
-                holder.bindData(mContext, mDatas[position] as Title2)
             }
         }
     }

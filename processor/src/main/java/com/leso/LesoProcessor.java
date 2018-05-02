@@ -47,7 +47,7 @@ public class LesoProcessor extends AbstractProcessor {
         for (TypeElement element : types) {
 
             try {
-                AdapterRecycleViewGenerate.getJavaFile(element).writeTo(processingEnv.getFiler());
+                AdapterRecycleViewGenerate.getJavaFile(element, processingEnv).writeTo(processingEnv.getFiler());
             } catch (IOException e) {
                 e.printStackTrace();
             }

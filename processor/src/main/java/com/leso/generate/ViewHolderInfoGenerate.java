@@ -30,6 +30,7 @@ public class ViewHolderInfoGenerate {
         ClassName layoutInflater =  ClassName.get("android.view", "LayoutInflater" );
         ClassName viewgroup =  ClassName.get("android.view", "ViewGroup" );
         ClassName view =  ClassName.get("android.view", "View" );
+        ClassName classNameViewOnClick =  ClassName.get("android.view.View","OnClickListener" );
         ClassName iviewholderInfo = ClassName.get("com.leso.adapter.info", "IViewHolderInfo");
         Element enclosingElement = element.getEnclosingElement();
         while ( ElementKind.PACKAGE != enclosingElement.getKind() ) {
@@ -77,8 +78,11 @@ public class ViewHolderInfoGenerate {
                 .returns(void.class)
                 .addParameter(context, "context")
                 .addParameter(TypeName.OBJECT, "data")
+                .addParameter(classNameViewOnClick, "onClick")
                 .addParameter(viewhoder, "vh")
-                .addStatement("vh.bindData(context, ("+getData(holder)+" ) data)")
+                .beginControlFlow("if (vh instanceof com.leso.viewholder.LesoViewHolder)")
+                .addStatement("vh.bindData(context, ("+getData(holder)+" ) data, onClick)")
+                .endControlFlow()
                 .build();
 
         TypeVariableName T = TypeVariableName.get("T", viewhoder);
@@ -91,6 +95,7 @@ public class ViewHolderInfoGenerate {
                 .addMethod(invalidData)
                 .addMethod(getLayout)
                 .addMethod(getViewHolder)
+                .addMethod(bindData)
                 .build();
 
 

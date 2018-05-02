@@ -4,9 +4,10 @@ buildscript {
     repositories {
         jcenter()
         mavenCentral()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:3.1.2'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
@@ -20,7 +21,7 @@ ext {
     libraryName = 'Leso annotation'
     artifact = 'annotation'
     libraryDescription = 'Adapter Recycleview with annotation'
-    libraryVersion = '1.1.3'
+    libraryVersion = '1.1.4'
 
     developerId = 'dangngocduc'
     developerName = 'Dang Ngoc Duc'

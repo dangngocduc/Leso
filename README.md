@@ -23,8 +23,8 @@ with kotlin
     apply plugin: 'kotlin-kapt'
     ....
     dependencies {
-        compile 'com.android.leso:annotation:1.1.3'
-        kapt 'com.android.leso:processor:1.1.3'
+        compile 'com.android.leso:leso:1.1.7'
+        kapt 'com.android.leso:processor:1.1.9'
     }
 ```
 

@@ -38,6 +38,7 @@ public class IViewHolderInfoGenerate {
                 .addParameter(layoutInflater, "inflater")
                 .addModifiers(Modifier.PUBLIC,  Modifier.ABSTRACT)
                 .build();
+        ClassName classNameViewOnClick =  ClassName.get("android.view.View","OnClickListener" );
 
         ClassName context = ClassName.get("android.content", "Context");
         ClassName hoverboard = ClassName.get("android.support.v7.widget", "RecyclerView","ViewHolder");
@@ -48,6 +49,7 @@ public class IViewHolderInfoGenerate {
                 .addModifiers(Modifier.PUBLIC,  Modifier.ABSTRACT)
                 .addParameter(context, "context")
                 .addParameter(TypeName.OBJECT, "object")
+                .addParameter(classNameViewOnClick, "onClick")
                 .addParameter(genneric, "vh")
                 .build();
 
@@ -59,6 +61,7 @@ public class IViewHolderInfoGenerate {
                 .addModifiers(Modifier.PUBLIC)
                 .addMethod(invalidData)
                 .addMethod(getLayout)
+                .addMethod(bindData)
                 .addJavadoc(C.author)
                 .addJavadoc("\n")
                 .addMethod(getViewHolder)

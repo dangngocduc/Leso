@@ -8,7 +8,7 @@ android {
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.android.leso"
-        minSdkVersion 15
+        minSdkVersion 18
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
@@ -26,10 +26,11 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
-
-    compile 'com.android.leso:annotation:1.0.3'
-    kapt 'com.android.leso:processor:1.1.2'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+//    kapt project(':processor')
+        kapt 'com.android.leso:processor:1.1.7'
+
+    implementation 'com.android.leso:leso:1.1.7'
 }
 repositories {
     mavenCentral()

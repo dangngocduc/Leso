@@ -2,6 +2,7 @@ package com.android.leso
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import com.android.leso.model.Title
 import com.android.leso.model.Title2
 import com.android.leso.viewholders.ViewHolderSimple2
@@ -13,16 +14,4 @@ import com.annotation.AdapterRecycleView
  */
 
 @AdapterRecycleView(viewholders = [(ViewHolderSimpleTitle::class), (ViewHolderSimple2::class)])
-class HomeAdapter(var context :Context) : HomeAdapter_Builder<Any>(context)  {
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when(holder) {
-            is ViewHolderSimpleTitle -> {
-                holder.bindData(context, mDatas[position] as Title)
-            }
-            is ViewHolderSimple2 -> {
-                holder.bindData(context, mDatas[position] as Title2)
-            }
-        }
-
-    }
-}
+class HomeAdapter(var context :Context, var onClick : View.OnClickListener) : HomeAdapter_Builder<Any>(context, onClick)
