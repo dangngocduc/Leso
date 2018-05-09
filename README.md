@@ -24,7 +24,7 @@ with kotlin
     ....
     dependencies {
         compile 'com.android.leso:leso:1.1.7'
-        kapt 'com.android.leso:processor:1.1.9'
+        kapt 'com.android.leso:processor:1.2.0'
     }
 ```
 
