@@ -15,8 +15,8 @@ allprojects {
 Add this to your app level build.gradle as dependency
 
 ```groovy
-    annotationProcessor 'com.android.leso:leso:1.1.7'
-    compile 'com.android.leso:annotation:1.1.9'
+    compile 'com.android.leso:leso:1.1.7'
+    annotationProcessor 'com.android.leso:processor:1.2.0'
 ```
 with kotlin
 ```groovy
